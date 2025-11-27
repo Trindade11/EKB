@@ -5,6 +5,58 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+## Process Flow (Business View) *(mandatory)*
+
+<!--
+  IMPORTANTE: Antes de detalhar user stories, visualize o fluxo principal.
+  Este diagrama deve mostrar a jornada do usuário/processo em linguagem de negócio.
+  NÃO inclua detalhes técnicos (APIs, bancos, serviços).
+-->
+
+```mermaid
+flowchart TD
+  %% Preencha com o fluxo principal desta feature
+  %% Exemplo:
+  %% User[Usuário] --> Action1[Ação Principal]
+  %% Action1 --> Decision{Decisão?}
+  %% Decision -->|Sim| Result1[Resultado A]
+  %% Decision -->|Não| Result2[Resultado B]
+```
+
+### Insights do Fluxo
+
+- **Gaps identificados**: [Liste lacunas ou pontos fracos observados no fluxo]
+- **Oportunidades identificadas**: [Liste melhorias ou otimizações possíveis]
+- **Riscos identificados**: [Liste riscos ou pontos de atenção]
+
+---
+
+## Agent Collaboration (if multi-agent) *(include if applicable)*
+
+<!--
+  Se esta feature envolve múltiplos agentes ou componentes que colaboram,
+  mapeie a interação entre eles aqui. Vista de NEGÓCIO, não técnica.
+-->
+
+```mermaid
+flowchart TD
+  %% Exemplo de colaboração entre agentes:
+  %% User[Usuário] --> Orchestrator[Agente Orquestrador]
+  %% Orchestrator --> Agent1[Agente Especialista 1]
+  %% Orchestrator --> Agent2[Agente Especialista 2]
+  %% Agent1 --> Orchestrator
+  %% Agent2 --> Orchestrator
+  %% Orchestrator --> User
+```
+
+### Data Flow Between Agents (Conceptual)
+
+| De | Para | O que é passado | Propósito |
+|----|------|-----------------|-----------|
+| [Origem] | [Destino] | [Dados/Contexto] | [Por que essa informação é necessária] |
+
+---
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--

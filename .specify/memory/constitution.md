@@ -1,50 +1,94 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Project Constitution
+
+**Version**: 1.0.0 | **Ratified**: [DATE] | **Last Amended**: [DATE]
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Visual Modeling First
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+Toda especificação e plano deve incluir diagramas visuais (Mermaid) para:
+- Facilitar o entendimento por todos os stakeholders
+- Identificar gaps, riscos e oportunidades antes da implementação
+- Servir como documentação viva do sistema
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Regras**:
+- Specification: deve incluir fluxo de processo/jornada do usuário
+- Plan: deve incluir diagrama de arquitetura técnica e interações
+- Fluxos entre agentes/componentes devem ser explicitamente mapeados
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. User-Centric Communication
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+O usuário principal pode não ser desenvolvedor. Toda comunicação deve:
+- Usar linguagem clara e acessível
+- Explicar o propósito de cada ação/comando
+- Evitar jargão técnico desnecessário sem explicação
+- Fornecer passos completos e comandos prontos para executar
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### III. Established Components Only
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+Preferir componentes, bibliotecas e padrões amplamente adotados:
+- Usar drivers/SDKs oficiais sempre que disponíveis
+- Evitar bibliotecas experimentais ou pouco mantidas
+- Justificar explicitamente qualquer escolha fora do mainstream
+- Priorizar soluções com documentação abundante e comunidade ativa
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### IV. Stack Consistency
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+A stack tecnológica definida no Plan deve ser respeitada em toda implementação:
+- Não sugerir tecnologias alternativas sem solicitação explícita
+- Manter consistência com dependências já configuradas no projeto
+- Respeitar configurações de ambiente (.env, MCP, etc.) já existentes
+
+### V. Test-First Development
+
+Testes são parte integral do desenvolvimento:
+- Testes devem ser escritos/planejados antes da implementação
+- Cada requisito funcional deve ter critério de aceitação testável
+- Cobertura de testes deve ser considerada desde a especificação
+
+### VI. Simplicity & YAGNI
+
+Começar simples e adicionar complexidade apenas quando necessário:
+- Evitar over-engineering e abstrações prematuras
+- Implementar apenas o que foi especificado
+- Refatorar quando a complexidade se justificar, não antes
+
+### VII. Traceability & Auditability
+
+Todo artefato deve ser rastreável:
+- Especificações vinculadas a features
+- Planos vinculados a especificações
+- Tarefas vinculadas a planos
+- Mudanças documentadas com motivo e data
+
+## Quality Gates
+
+### Gate 1: Specification Ready
+
+- [ ] Fluxo de processo visualizado em Mermaid
+- [ ] User stories priorizadas e independentemente testáveis
+- [ ] Requisitos funcionais claros e sem ambiguidade
+- [ ] Critérios de sucesso mensuráveis e technology-agnostic
+- [ ] Máximo 3 itens marcados como [NEEDS CLARIFICATION]
+
+### Gate 2: Plan Ready
+
+- [ ] Diagrama de arquitetura técnica em Mermaid
+- [ ] Stack tecnológica explicitamente definida
+- [ ] Contratos/interfaces entre componentes documentados
+- [ ] Estrutura de diretórios definida
+- [ ] Constitution Check passou
+
+### Gate 3: Implementation Ready
+
+- [ ] Tarefas quebradas e priorizadas
+- [ ] Cada tarefa vinculada a um requisito
+- [ ] Critérios de aceitação definidos por tarefa
+- [ ] Dependências entre tarefas mapeadas
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+- Esta Constituição tem precedência sobre práticas ad-hoc
+- Alterações requerem documentação, justificativa e atualização de versão
+- Violações devem ser justificadas explicitamente no artefato relevante
+- Revisões periódicas da Constituição são encorajadas conforme o projeto evolui

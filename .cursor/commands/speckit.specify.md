@@ -75,7 +75,12 @@ Given that feature description, do this:
        If empty: ERROR "No feature description provided"
     2. Extract key concepts from description
        Identify: actors, actions, data, constraints
-    3. For unclear aspects:
+    3. **MANDATORY**: Generate Process Flow diagram in Mermaid
+       - Create a flowchart TD showing the main user journey/process
+       - Use business language, NOT technical terms
+       - Identify gaps, opportunities, and risks from the visual flow
+       - If multi-agent: Create Agent Collaboration diagram showing data flow between agents
+    4. For unclear aspects:
        - Make informed guesses based on context and industry standards
        - Only mark with [NEEDS CLARIFICATION: specific question] if:
          - The choice significantly impacts feature scope or user experience
@@ -201,6 +206,8 @@ Given that feature description, do this:
 - Avoid HOW to implement (no tech stack, APIs, code structure).
 - Written for business stakeholders, not developers.
 - DO NOT create any checklists that are embedded in the spec. That will be a separate command.
+- **ALWAYS** include Mermaid flowchart for the main process/journey.
+- **ALWAYS** fill the "Insights do Fluxo" section with gaps, opportunities, and risks identified from the visual flow.
 
 ### Section Requirements
 

@@ -1,0 +1,50 @@
+# Project Rules
+
+## Spec Kit Integration
+
+This project uses Spec Kit for Spec-Driven Development. The methodology separates:
+- **Constitution**: Project principles, rules, and constraints that apply to ALL features
+- **Specification**: What a specific feature does and why (business view)
+- **Plan**: How a feature will be implemented technically
+
+### Available Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/speckit.triage` | Analyzes mixed/broad user input and separates Constitution content from Specification content |
+| `/speckit.constitution` | Creates/updates project principles and rules |
+| `/speckit.specify` | Creates feature specifications (WHAT and WHY, no technical details) |
+| `/speckit.plan` | Creates technical implementation plans (HOW) |
+| `/speckit.tasks` | Breaks plans into actionable tasks |
+| `/speckit.implement` | Executes implementation following the plan |
+| `/speckit.clarify` | Asks structured questions to de-risk ambiguous areas |
+| `/speckit.analyze` | Cross-artifact consistency report |
+| `/speckit.checklist` | Generates quality checklists |
+
+## Visual Modeling Requirements
+
+This project requires Mermaid diagrams in all artifacts:
+
+### In Specifications (spec.md):
+- Process Flow (flowchart TD) - user journey in business language
+- Agent Collaboration (if multi-agent) - data flow between agents
+- Insights section with gaps, opportunities, and risks
+
+### In Plans (plan.md):
+- System Interaction Diagram (sequenceDiagram) - technical component interactions
+- Component Architecture (flowchart TB) - system structure
+- Agent Contracts table (if multi-agent)
+
+## Communication Style
+
+- User may not be a developer - explain technical concepts when needed
+- Provide complete commands ready to execute
+- Explain the purpose before taking actions
+- Use simple, clear language
+- Prefer established, well-documented libraries and patterns
+
+## Stack Consistency
+
+- Respect technology choices defined in plan.md
+- Don't suggest alternative stacks without explicit request
+- Honor existing .env and MCP configurations
