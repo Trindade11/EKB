@@ -48,3 +48,24 @@ This project requires Mermaid diagrams in all artifacts:
 - Respect technology choices defined in plan.md
 - Don't suggest alternative stacks without explicit request
 - Honor existing .env and MCP configurations
+
+## Iterative Completeness (Golden Rule)
+
+At the end of EVERY phase, deliverable, or significant output, always ask:
+
+```
+🔄 Need another round?
+- What's missing?
+- What needs clarification?
+- What should be added?
+```
+
+- This is MANDATORY before closing any phase
+- Never assume the output is complete without user validation
+- Iterate until user explicitly confirms satisfaction
+
+## Source of Truth
+
+- **Constitution**: `.specify/memory/constitution.md` - read FIRST for project rules
+- **Documentation**: `.specify/docs/` - visual flows and methodology guides
+- **Templates**: `.specify/templates/` - artifact templates
