@@ -2,11 +2,11 @@
 description: Generate an actionable, dependency-ordered tasks.md for the feature based on available design artifacts.
 handoffs: 
   - label: Analyze For Consistency
-    agent: speckit.analyze
+    agent: speckit-analyze
     prompt: Run a project analysis for consistency
     send: true
   - label: Implement Project
-    agent: speckit.implement
+    agent: speckit-implement
     prompt: Start the implementation in phases
     send: true
 ---
@@ -26,6 +26,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 2. **Load design documents**: Read from FEATURE_DIR:
    - **Required**: plan.md (tech stack, libraries, structure), spec.md (user stories with priorities)
    - **Optional**: data-model.md (entities), contracts/ (API endpoints), research.md (decisions), quickstart.md (test scenarios)
+   - **Optional**: project-context/project-overview.md (macro view and current status)
    - **Optional**: project-context/folder-structure.md (project organization)
    - Note: Not all projects have all documents. Generate tasks based on what's available.
 
@@ -60,6 +61,29 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Independent test criteria for each story
    - Suggested MVP scope (typically just User Story 1)
    - Format validation: Confirm ALL tasks follow the checklist format (checkbox, ID, labels, file paths)
+
+6. **Update Project Overview** (MANDATORY):
+   
+   After generating tasks, update `project-context/project-overview.md`:
+   
+   - Update Status Table: Set Tasks status (e.g., "0/15" → "15 tasks generated")
+   - Update Blocos Funcionais: Mark Tasks column as 🟡 (ready to implement)
+   - Increment version if significant change
+   - Add entry to version history
+
+7. **Update Project Workplan** (MANDATORY):
+
+   After generating tasks, update `project-context/project-workplan.md`:
+
+   a. **Update Agent Execution Plan**:
+      - Mark `/speckit-tasks` as ✅ DONE
+   
+   b. **Update Current Phase**:
+      - Set "Active Phase" to "5 – Tasks"
+      - Set "Next Recommended Action": "Run `/speckit-implement` to start execution"
+   
+   c. **Update Project Start Checklist**:
+      - Mark "Run `/speckit-tasks`" as complete
 
 Context for task generation: $ARGUMENTS
 

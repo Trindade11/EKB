@@ -7,7 +7,7 @@
 ## Purpose
 
 This document captures:
-- Decisions made and why
+- Decisions made and whyMindmap é mais “sensível” que flowchart
 - Problems encountered and solutions
 - Patterns that worked well
 - Anti-patterns to avoid

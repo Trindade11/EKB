@@ -1,5 +1,10 @@
 ---
 description: Create or update the feature specification from a natural language feature description.
+auto_execution_mode: 1
+---
+
+---
+description: Create or update the feature specification from a natural language feature description.
 handoffs: 
   - label: Build Technical Plan
     agent: speckit-plan
@@ -241,97 +246,4 @@ Given that feature description (from user input or backlog), do this:
       - Increment Specs count (e.g., "1/3" → "2/3")
       - Update status emoji (🔴 → 🟡 → 🟢)
    
-   c. **Update Blocos Funcionais Table**:
-      - Find the block this spec belongs to
-      - Mark Spec column as 🟡 (draft) or 🟢 (complete)
-   
-   d. **Resolve Gaps**:
-      - If this spec addresses a gap, mark it as resolved ✅
-      - Add resolution date and reference to spec
-   
-   e. **Increment Version**:
-      - If significant change, increment version (V1 → V2)
-      - Add entry to version history
-
-9. **Update Project Workplan** (MANDATORY):
-
-   After creating/updating a spec, update `project-context/project-workplan.md`:
-
-   a. **Update Agent Execution Plan**:
-      - Mark `/speckit-specify` as 🔄 IN_PROGRESS (or ✅ DONE if all specs complete)
-   
-   b. **Update Backlog Summary**:
-      - Remove absorbed items from Specification Backlog
-      - Add reference to created spec
-   
-   c. **Update Current Phase**:
-      - Set "Next Recommended Action" based on:
-        - More specs pending → "Continue `/speckit-specify` for next feature"
-        - Specs ready for planning → "Run `/speckit-plan` for [feature]"
-
-**NOTE:** The script creates and checks out the new branch and initializes the spec file before writing.
-
-## General Guidelines
-
-## Quick Guidelines
-
-- Focus on **WHAT** users need and **WHY**.
-- Avoid HOW to implement (no tech stack, APIs, code structure).
-- Written for business stakeholders, not developers.
-- DO NOT create any checklists that are embedded in the spec. That will be a separate command.
-- **ALWAYS** include Mermaid flowchart for the main process/journey.
-- **ALWAYS** fill the "Insights do Fluxo" section with gaps, opportunities, and risks identified from the visual flow.
-
-### Section Requirements
-
-- **Mandatory sections**: Must be completed for every feature
-- **Optional sections**: Include only when relevant to the feature
-- When a section doesn't apply, remove it entirely (don't leave as "N/A")
-
-### For AI Generation
-
-When creating this spec from a user prompt:
-
-1. **Make informed guesses**: Use context, industry standards, and common patterns to fill gaps
-2. **Document assumptions**: Record reasonable defaults in the Assumptions section
-3. **Limit clarifications**: Maximum 3 [NEEDS CLARIFICATION] markers - use only for critical decisions that:
-   - Significantly impact feature scope or user experience
-   - Have multiple reasonable interpretations with different implications
-   - Lack any reasonable default
-4. **Prioritize clarifications**: scope > security/privacy > user experience > technical details
-5. **Think like a tester**: Every vague requirement should fail the "testable and unambiguous" checklist item
-6. **Common areas needing clarification** (only if no reasonable default exists):
-   - Feature scope and boundaries (include/exclude specific use cases)
-   - User types and permissions (if multiple conflicting interpretations possible)
-   - Security/compliance requirements (when legally/financially significant)
-
-**Examples of reasonable defaults** (don't ask about these):
-
-- Data retention: Industry-standard practices for the domain
-- Performance targets: Standard web/mobile app expectations unless specified
-- Error handling: User-friendly messages with appropriate fallbacks
-- Authentication method: Standard session-based or OAuth2 for web apps
-- Integration patterns: RESTful APIs unless specified otherwise
-
-### Success Criteria Guidelines
-
-Success criteria must be:
-
-1. **Measurable**: Include specific metrics (time, percentage, count, rate)
-2. **Technology-agnostic**: No mention of frameworks, languages, databases, or tools
-3. **User-focused**: Describe outcomes from user/business perspective, not system internals
-4. **Verifiable**: Can be tested/validated without knowing implementation details
-
-**Good examples**:
-
-- "Users can complete checkout in under 3 minutes"
-- "System supports 10,000 concurrent users"
-- "95% of searches return results in under 1 second"
-- "Task completion rate improves by 40%"
-
-**Bad examples** (implementation-focused):
-
-- "API response time is under 200ms" (too technical, use "Users see results instantly")
-- "Database can handle 1000 TPS" (implementation detail, use user-facing metric)
-- "React components render efficiently" (framework-specific)
-- "Redis cache hit rate above 80%" (technology-specific)
+   c. **Update Blocos Funcionais Table

@@ -1,5 +1,10 @@
 ---
 description: Triage user input to separate Constitution principles from Specification features. Writes to persistent backlog files for downstream agents.
+auto_execution_mode: 1
+---
+
+---
+description: Triage user input to separate Constitution principles from Specification features. Writes to persistent backlog files for downstream agents.
 handoffs: 
   - label: Process Constitution Backlog
     agent: speckit-constitution
@@ -411,36 +416,4 @@ Triage is designed for **N interactions**, not one-shot:
 3. **Exit criteria**: Move to next phase when:
    - Macro view is stable (no major new blocks expected)
    - Constitution backlog has clear items to process
-   - At least one feature is clear enough to specify
-
-### Decision Point Facilitation:
-
-When a decision point is reached:
-
-1. **DP1 - Project Structure**:
-   - Present options ("monorepo?", "by domain?", "by layer?")
-   - Guide decision in chat
-   - Update `folder-structure.md` with decision
-   - Mark DP1 as ✅ DONE in workplan
-
-2. **DP2 - Tech Stack**:
-   - Confirm technologies mentioned
-   - Document in constitution
-   - Mark DP2 as ✅ DONE in workplan
-
-## Example
-
-**User Input**:
-> "I want to create a task management system. Always use the database we already have configured. Users can create projects and tasks. I'm not a developer so I need clear explanations. The system should have a dashboard with metrics. Always use established components."
-
-**Triage Output**:
-
-### Constitution Entries (3):
-1. `TRG-CON-20250228-001`: "Always use the database already configured"
-2. `TRG-CON-20250228-002`: "I'm not a developer, need clear explanations"
-3. `TRG-CON-20250228-003`: "Always use established components"
-
-### Specification Entries (3):
-1. `TRG-SPC-20250228-001`: "Task management system" (feature: task-system)
-2. `TRG-SPC-20250228-002`: "Users can create projects and tasks" (feature: project-task-management)
-3. `TRG-SPC-20250228-003`: "Dashboard with metrics" (feature: metrics-dashboard)
+   - At leas

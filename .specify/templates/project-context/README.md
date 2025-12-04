@@ -8,7 +8,7 @@ These templates help you document critical project information that AI agents ne
 
 ## Quick Start
 
-1. Run `/speckit.context` to initialize your project context
+1. Run `/speckit-context` to initialize your project context
 2. Fill in each template with your project's specific information
 3. AI agents will automatically read this context when processing requests
 
@@ -16,6 +16,8 @@ These templates help you document critical project information that AI agents ne
 
 | Template | Purpose | When to Fill |
 |----------|---------|--------------|
+| `project-workplan.md` | **Agent orchestration plan** | **First file - created by context/triage** |
+| `project-overview.md` | **Macro view + status + gaps** | **Created with workplan by triage** |
 | `env-vars.md` | Environment variables documentation | After setting up `.env` |
 | `database-schema.md` | Semantic database schema | When designing data model |
 | `tools-registry.md` | Available tools and MCPs | After configuring integrations |
@@ -23,9 +25,30 @@ These templates help you document critical project information that AI agents ne
 | `folder-structure.md` | Project organization guide | At project start |
 | `learnings.md` | Project learnings and decisions | Ongoing throughout project |
 
+### Project Workplan (Required)
+
+`project-workplan.md` is the **orchestration artifact** for the project. It:
+
+- Tracks **which agent to call next** in the workflow
+- Shows the **status of each phase** (TODO/IN_PROGRESS/DONE)
+- Logs **triage rounds** for progressive refinement
+- Tracks **decision points** (project structure, tech stack)
+- Maintains **backlog summaries** for constitution and specs
+- Provides a **project start checklist** for new projects
+
+### Project Overview (Required)
+
+`project-overview.md` is the **central artifact** for the project. It:
+
+- Shows the **macro view** with the main functional blocks
+- Tracks the **completion status** of all artifacts
+- Lists **identified gaps** that need attention
+- Is **automatically updated** by all main Spec Kit commands
+- Acts as a **visual dashboard** for project progress
+
 ## File Structure
 
-After running `/speckit.context`, your project will have:
+After running `/speckit-context`, your project will have:
 
 ```
 project-root/
@@ -34,6 +57,8 @@ project-root/
 │       └── project-context/  # These templates
 │
 ├── project-context/       # YOUR PROJECT'S CONTEXT (specific)
+│   ├── project-workplan.md   # 🎯 ORCHESTRATION (required, created first)
+│   ├── project-overview.md   # 🎯 MACRO VIEW (required, created with workplan)
 │   ├── env-vars.md
 │   ├── database-schema.md
 │   ├── tools-registry.md
@@ -75,5 +100,5 @@ project-root/
 
 - Constitution principle IX: Project Context Documentation
 - Constitution principle X: Folder Organization
-- `/speckit.context` command
+- `/speckit-context` command
 

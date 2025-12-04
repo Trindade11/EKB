@@ -11,24 +11,24 @@ flowchart TD
     
     Start --> Q1{What is it?}
     
-    Q1 -->|"A mix of different things"| Triage[Use /speckit.triage]
+    Q1 -->|"A mix of different things"| Triage[Use /speckit-triage]
     Q1 -->|"Clear single purpose"| Q2{What type?}
     
     Triage --> Sorted[Content sorted into backlogs]
     Sorted --> Q2
     
-    Q2 -->|"Project rule/principle"| Constitution[Use /speckit.constitution]
-    Q2 -->|"Technical Context<br/>(DB, Env, Tools)"| Context[Use /speckit.context]
+    Q2 -->|"Project rule/principle"| Constitution[Use /speckit-constitution]
+    Q2 -->|"Technical Context<br/>(DB, Env, Tools)"| Context[Use /speckit-context]
     Q2 -->|"Feature/behavior"| Q3{Do you have a spec?}
     
-    Q3 -->|"No"| Specify[Use /speckit.specify]
+    Q3 -->|"No"| Specify[Use /speckit-specify]
     Q3 -->|"Yes"| Q4{Do you have a plan?}
     
-    Q4 -->|"No"| Plan[Use /speckit.plan]
+    Q4 -->|"No"| Plan[Use /speckit-plan]
     Q4 -->|"Yes"| Q5{Do you have tasks?}
     
-    Q5 -->|"No"| Tasks[Use /speckit.tasks]
-    Q5 -->|"Yes"| Implement[Use /speckit.implement]
+    Q5 -->|"No"| Tasks[Use /speckit-tasks]
+    Q5 -->|"Yes"| Implement[Use /speckit-implement]
     
     Constitution --> AskRound["🔄 Need another round?"]
     Context --> AskRound
@@ -64,20 +64,20 @@ flowchart TD
     Analyze -->|"Contains 'create endpoint', 'add component',<br/>'implement X'"| Technical[TECHNICAL TASK]
     Analyze -->|"Mix of above"| Mixed[MIXED CONTENT]
     
-    ProjectRule --> Constitution[→ /speckit.constitution]
+    ProjectRule --> Constitution[→ /speckit-constitution]
     TechPref --> Constitution
     
-    ProjContext --> ContextCmd[→ /speckit.context]
+    ProjContext --> ContextCmd[→ /speckit-context]
     
-    Feature --> Specify[→ /speckit.specify]
+    Feature --> Specify[→ /speckit-specify]
     
     Technical --> Q1{Have spec?}
-    Q1 -->|No| NeedSpec[First → /speckit.specify]
+    Q1 -->|No| NeedSpec[First → /speckit-specify]
     Q1 -->|Yes| Q2{Have plan?}
-    Q2 -->|No| Plan[→ /speckit.plan]
-    Q2 -->|Yes| Tasks[→ /speckit.tasks or /speckit.implement]
+    Q2 -->|No| Plan[→ /speckit-plan]
+    Q2 -->|Yes| Tasks[→ /speckit-tasks or /speckit-implement]
     
-    Mixed --> Triage[→ /speckit.triage]
+    Mixed --> Triage[→ /speckit-triage]
     
     style Constitution fill:#e3f2fd,stroke:#1976d2,color:#000
     style ContextCmd fill:#d1c4e9,stroke:#512da8,color:#000
@@ -100,11 +100,11 @@ flowchart TD
     Q1 -->|"constitution + spec + plan"| State4[🔧 Have plan]
     Q1 -->|"All including tasks"| State5[📝 Ready to implement]
     
-    State1 --> Action1["Start with /speckit.constitution<br/>or /speckit.triage"]
-    State2 --> Action2["Ready for /speckit.specify"]
-    State3 --> Action3["Ready for /speckit.plan"]
-    State4 --> Action4["Ready for /speckit.tasks"]
-    State5 --> Action5["Ready for /speckit.implement"]
+    State1 --> Action1["Start with /speckit-constitution<br/>or /speckit-triage"]
+    State2 --> Action2["Ready for /speckit-specify"]
+    State3 --> Action3["Ready for /speckit-plan"]
+    State4 --> Action4["Ready for /speckit-tasks"]
+    State5 --> Action5["Ready for /speckit-implement"]
     
     style State1 fill:#e8f5e9,stroke:#4caf50,color:#000
     style State2 fill:#e3f2fd,stroke:#1976d2,color:#000
@@ -129,14 +129,14 @@ flowchart TD
     Problem -->|"Don't know where<br/>to start"| P6
     Problem -->|"Spec unclear,<br/>need questions"| P7
     
-    P1_5["Document Context"] --> Sol1_5[/speckit.context]
-    P1["Standards & Rules"] --> Sol1[/speckit.constitution]
-    P2["New Feature"] --> Sol2[/speckit.triage or /speckit.specify]
-    P3["Need Architecture"] --> Sol3[/speckit.plan]
-    P4["Need Task Breakdown"] --> Sol4[/speckit.tasks]
-    P5["Need Implementation"] --> Sol5[/speckit.implement]
-    P6["Confused/Mixed Input"] --> Sol6[/speckit.triage]
-    P7["Ambiguity"] --> Sol7[/speckit.clarify]
+    P1_5["Document Context"] --> Sol1_5[/speckit-context]
+    P1["Standards & Rules"] --> Sol1[/speckit-constitution]
+    P2["New Feature"] --> Sol2[/speckit-triage or /speckit-specify]
+    P3["Need Architecture"] --> Sol3[/speckit-plan]
+    P4["Need Task Breakdown"] --> Sol4[/speckit-tasks]
+    P5["Need Implementation"] --> Sol5[/speckit-implement]
+    P6["Confused/Mixed Input"] --> Sol6[/speckit-triage]
+    P7["Ambiguity"] --> Sol7[/speckit-clarify]
     
     style Sol1_5 fill:#d1c4e9,stroke:#512da8,color:#000
     style Sol1 fill:#e3f2fd,stroke:#1976d2,color:#000
@@ -152,16 +152,16 @@ flowchart TD
 
 | If you have... | And you want... | Use this command |
 |----------------|-----------------|------------------|
-| Mixed input | Sorted backlogs | `/speckit.triage` |
-| Technical context | Documented context | `/speckit.context` |
-| Project rules | Documented constitution | `/speckit.constitution` |
-| Feature idea | Formal specification | `/speckit.specify` |
-| Specification | Technical plan | `/speckit.plan` |
-| Plan | Actionable tasks | `/speckit.tasks` |
-| Tasks | Working code | `/speckit.implement` |
-| Unclear requirements | Questions to ask | `/speckit.clarify` |
-| All artifacts | Consistency check | `/speckit.analyze` |
-| Phase transition | Quality checklist | `/speckit.checklist` |
+| Mixed input | Sorted backlogs | `/speckit-triage` |
+| Technical context | Documented context | `/speckit-context` |
+| Project rules | Documented constitution | `/speckit-constitution` |
+| Feature idea | Formal specification | `/speckit-specify` |
+| Specification | Technical plan | `/speckit-plan` |
+| Plan | Actionable tasks | `/speckit-tasks` |
+| Tasks | Working code | `/speckit-implement` |
+| Unclear requirements | Questions to ask | `/speckit-clarify` |
+| All artifacts | Consistency check | `/speckit-analyze` |
+| Phase transition | Quality checklist | `/speckit-checklist` |
 
 ## Command Chain Examples
 
@@ -172,15 +172,15 @@ flowchart TD
 flowchart LR
     Input["User describes<br/>payment feature"]
     
-    Input --> T[/speckit.triage]
-    T --> CTX[/speckit.context<br/>if context exists]
-    T --> C[/speckit.constitution<br/>if rules exist]
-    T --> S[/speckit.specify]
+    Input --> T[/speckit-triage]
+    T --> CTX[/speckit-context<br/>if context exists]
+    T --> C[/speckit-constitution<br/>if rules exist]
+    T --> S[/speckit-specify]
     CTX --> S
     C --> S
-    S --> P[/speckit.plan]
-    P --> K[/speckit.tasks]
-    K --> I[/speckit.implement]
+    S --> P[/speckit-plan]
+    P --> K[/speckit-tasks]
+    K --> I[/speckit-implement]
     I --> Done["✅ Feature complete"]
     
     style Input fill:#e8f5e9,stroke:#4caf50,color:#000
@@ -194,7 +194,7 @@ flowchart LR
 flowchart LR
     Input["'All APIs must be versioned'"]
     
-    Input --> C[/speckit.constitution]
+    Input --> C[/speckit-constitution]
     C --> Review["Review existing specs"]
     Review --> Update["Update affected specs"]
     Update --> Done["✅ Rule applied"]
@@ -210,10 +210,10 @@ flowchart LR
 flowchart LR
     Input["Have spec.md,<br/>need code"]
     
-    Input --> CTX[/speckit.context<br/>(first time)]
-    CTX --> P[/speckit.plan]
-    P --> K[/speckit.tasks]
-    K --> I[/speckit.implement]
+    Input --> CTX[/speckit-context<br/>(first time)]
+    CTX --> P[/speckit-plan]
+    P --> K[/speckit-tasks]
+    K --> I[/speckit-implement]
     I --> Done["✅ Code generated"]
     
     style Input fill:#e8f5e9,stroke:#4caf50,color:#000

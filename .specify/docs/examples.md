@@ -8,7 +8,7 @@ This example walks through creating a **User Authentication** feature using all 
 
 ## Phase 0: Setup Project Context (Optional but Recommended)
 
-### Command: /speckit.context
+### Command: /speckit-context
 
 Before starting features, document your project's technical context:
 
@@ -22,9 +22,12 @@ We're using:
 - JWT for authentication
 ```
 
-**Output**: Creates `project-context/` with templates for env vars, database schema, tools, etc.
+**Output**: Creates `project-context/` with:
+- `project-workplan.md` (agent orchestration plan)
+- `project-overview.md` (macro view skeleton)
+- Templates for env vars, database schema, tools, etc.
 
-This step is optional but helps AI agents understand your project better when generating plans and code.
+This step is optional but helps AI agents understand your project better when generating plans and code, and gives you a single place to see **which agent to call next**.
 
 ---
 
@@ -42,7 +45,7 @@ Also, I want all APIs to be RESTful and use JWT for tokens.
 The system should follow OWASP security guidelines.
 ```
 
-### Command: /speckit.triage
+### Command: /speckit-triage
 
 The AI analyzes and separates:
 
@@ -107,9 +110,94 @@ The AI analyzes and separates:
 
 ---
 
+## Project Overview (Auto-Generated Macro View)
+
+After triage, the `/speckit-triage` command can also generate or update a
+macro project overview at `project-context/project-overview.md`.
+
+For the authentication example, an excerpt might look like:
+
+```markdown
+# Project Overview
+
+> High-level, visual overview of the project, its status, and identified gaps
+
+**Version**: V1 | **Created**: 2024-01-15 | **Updated**: 2024-01-15
+
+## 🎯 Project Macro View
+
+> First increment: User Authentication for the platform.
+
+### Main Blocks Diagram
+
+[Mermaid diagram of main functional blocks: Authentication, Dashboard, Reports]
+
+## 📊 Completion Status
+
+| Artifact | Status | Progress |
+|----------|--------|----------|
+| Constitution | 🟡 Draft | 3 entries pending |
+| Specs | 🔴 Pending | 0/1 |
+| Plans | ⚪ Not started | 0/1 |
+| Tasks | ⚪ Not started | 0/1 |
+| Code | ⚪ Not started | 0% |
+
+## ⚠️ Identified Gaps
+
+- [ ] **[GAP-001]**: Account lockout policy after failed login attempts
+- [ ] **[GAP-002]**: Choice of email provider and delivery guarantees
+```
+
+This file becomes the **single-page macro view** that later commands
+(`/speckit-plan`, `/speckit-tasks`, `/speckit-implement`) read to
+understand overall project status and gaps.
+
+---
+
+## Project Workplan (Auto-Generated Agent Orchestration)
+
+Alongside the overview, `/speckit-context` + `/speckit-triage` maintain
+`project-context/project-workplan.md`, which tells you **which agent to call next**.
+
+For the authentication example, an excerpt might look like:
+
+```markdown
+# Project Workplan
+
+> Agent orchestration plan: which agents to call, in what order, and current status.
+
+## Current Phase
+
+**Active Phase**: 1 – Triage  
+**Next Recommended Action**: Continue `/speckit-triage` to refine scope for User Authentication
+
+## Agent Execution Plan
+
+| # | Phase | Agent | Goal | Status | Notes |
+|---|-------|-------|------|--------|-------|
+| 0 | Setup | `/speckit-context` | Initialize project context | ✅ DONE | Ran before this example |
+| 1 | Triage | `/speckit-triage` | Clarify scope, macro view, backlogs | 🔄 IN_PROGRESS | Multi-round for auth feature |
+| 2 | Constitution | `/speckit-constitution` | Consolidate API/security rules | ⬜ TODO | Uses REST/JWT/OWASP items |
+| 3 | Specification | `/speckit-specify` | Create User Authentication spec | ⬜ TODO | Feature: user-auth |
+| 4 | Planning | `/speckit-plan` | Technical plan for auth | ⬜ TODO | – |
+| 5 | Tasks | `/speckit-tasks` | Break auth plan into tasks | ⬜ TODO | – |
+| 6 | Implementation | `/speckit-implement` | Implement tasks for auth | ⬜ TODO | – |
+
+## Triage Rounds Log
+
+| Round | Date | Focus | Outputs Updated | Gaps Remaining |
+|-------|------|-------|-----------------|----------------|
+| 1 | 2024-01-15 | Initial auth scope | Overview V1, triage backlogs | Lockout policy, email provider |
+```
+
+This file becomes the **single-page orchestration view** that shows
+which `/speckit.*` command should run next and why.
+
+---
+
 ## Phase 2: Constitution
 
-### Command: /speckit.constitution
+### Command: /speckit-constitution
 
 Processes the constitution backlog and creates/updates `constitution.md`:
 
@@ -145,7 +233,7 @@ Backlog entries marked as `absorbed`.
 
 ## Phase 3: Specification
 
-### Command: /speckit.specify
+### Command: /speckit-specify
 
 Processes specification backlog and creates feature spec:
 
@@ -265,7 +353,7 @@ As a user who forgot my password, I want to reset it securely.
 
 ## Phase 4: Plan
 
-### Command: /speckit.plan
+### Command: /speckit-plan
 
 Creates technical implementation plan:
 
@@ -393,7 +481,7 @@ backend/
 
 ## Phase 5: Tasks
 
-### Command: /speckit.tasks
+### Command: /speckit-tasks
 
 Breaks plan into actionable tasks:
 
@@ -499,7 +587,7 @@ Breaks plan into actionable tasks:
 
 ## Phase 6: Implementation
 
-### Command: /speckit.implement
+### Command: /speckit-implement
 
 Generates code following tasks. Example output for Task 3:
 
@@ -552,13 +640,13 @@ export class AuthService {
 
 | Phase | Command | Input | Output |
 |-------|---------|-------|--------|
-| 0 | /speckit.context | Tech stack info | project-context/ folder |
-| 1 | /speckit.triage | Mixed user input | Sorted backlogs |
-| 2 | /speckit.constitution | Constitution backlog | constitution.md |
-| 3 | /speckit.specify | Spec backlog | spec.md with diagrams |
-| 4 | /speckit.plan | spec.md + context | plan.md with architecture |
-| 5 | /speckit.tasks | plan.md | tasks.md with breakdown |
-| 6 | /speckit.implement | tasks.md + context | Source code |
+| 0 | /speckit-context | Tech stack info | project-context/ folder |
+| 1 | /speckit-triage | Mixed user input | Sorted backlogs |
+| 2 | /speckit-constitution | Constitution backlog | constitution.md |
+| 3 | /speckit-specify | Spec backlog | spec.md with diagrams |
+| 4 | /speckit-plan | spec.md + context | plan.md with architecture |
+| 5 | /speckit-tasks | plan.md | tasks.md with breakdown |
+| 6 | /speckit-implement | tasks.md + context | Source code |
 
 ---
 

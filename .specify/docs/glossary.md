@@ -66,43 +66,43 @@ A single item in a triage backlog, with metadata (ID, timestamp, status, content
 
 ## Commands
 
-### /speckit.triage
+### /speckit-triage
 
 Analyzes mixed input and routes content to appropriate backlogs.
 
-### /speckit.constitution
+### /speckit-constitution
 
 Creates or updates the constitution from backlog or direct input.
 
-### /speckit.context
+### /speckit-context
 
 Initializes and manages project-specific technical context documentation (env vars, database schema, tools/MCPs, agent framework).
 
-### /speckit.specify
+### /speckit-specify
 
 Creates feature specifications with diagrams, user stories, and requirements.
 
-### /speckit.plan
+### /speckit-plan
 
 Creates technical implementation plans with architecture and contracts.
 
-### /speckit.tasks
+### /speckit-tasks
 
 Breaks down plans into actionable tasks with acceptance criteria.
 
-### /speckit.implement
+### /speckit-implement
 
 Generates code following the tasks and respecting the constitution.
 
-### /speckit.clarify
+### /speckit-clarify
 
 Generates structured questions for ambiguous requirements.
 
-### /speckit.analyze
+### /speckit-analyze
 
 Produces a consistency report across all artifacts.
 
-### /speckit.checklist
+### /speckit-checklist
 
 Generates quality gate checklist for current phase.
 

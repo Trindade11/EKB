@@ -31,7 +31,7 @@ flowchart TD
     Check -->|No| Read1
     
     subgraph ProjectContext["0️⃣ Project Context (if exists)"]
-        Read0["Read project-context/<br/>- env-vars.md<br/>- database-schema.md<br/>- tools-registry.md<br/>- agent-framework.md"]
+        Read0["Read project-context/<br/>- project-workplan.md<br/>- project-overview.md<br/>- env-vars.md<br/>- database-schema.md<br/>- tools-registry.md<br/>- agent-framework.md"]
     end
     
     Read0 --> Read1
@@ -51,7 +51,10 @@ flowchart TD
     style SpecKitArtifacts fill:#fff3e0,stroke:#ff9800,color:#000
 ```
 
-**IMPORTANT**: Always check for `project-context/` folder first. It contains critical project-specific information that should inform all downstream artifacts.
+**IMPORTANT**: Always check for `project-context/` folder first. In particular:
+- `project-workplan.md` tells you the current phase and which `/speckit.*` command should come next.
+- `project-overview.md` shows the macro project state (blocks, status, gaps).
+Then use env vars, database schema, tools, and agent framework to enrich technical context for planning and implementation.
 
 ## Artifact Interpretation Guide
 
@@ -165,7 +168,7 @@ flowchart TD
 flowchart TD
     Missing{What's missing?}
     
-    Missing -->|"Constitution doesn't exist"| M1["Create with /speckit.constitution<br/>or proceed with defaults"]
+    Missing -->|"Constitution doesn't exist"| M1["Create with /speckit-constitution<br/>or proceed with defaults"]
     
     Missing -->|"Spec incomplete"| M2["Mark [NEEDS CLARIFICATION]<br/>Ask specific questions<br/>Don't assume"]
     

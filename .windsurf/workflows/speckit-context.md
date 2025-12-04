@@ -1,5 +1,10 @@
 ---
 description: Initialize or update project context documentation (env vars, database schema, tools, agents).
+auto_execution_mode: 1
+---
+
+---
+description: Initialize or update project context documentation (env vars, database schema, tools, agents).
 handoffs:
   - label: Create Specification
     agent: speckit-specify

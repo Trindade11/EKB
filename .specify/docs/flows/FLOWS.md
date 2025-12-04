@@ -14,6 +14,7 @@
 | File | Description | Diagrams |
 |------|-------------|----------|
 | [overview.md](./overview.md) | High-level Spec-Driven Development methodology | 5 |
+| [project-lifecycle.md](./project-lifecycle.md) | **🎯 Project evolution flow: Macro → Micro** | 6 |
 | [command-flow.md](./command-flow.md) | Detailed flow for each `/speckit.*` command | 12 |
 | [triage-system.md](./triage-system.md) | How the triage backlog system works | 7 |
 | [artifact-relationships.md](./artifact-relationships.md) | Relationships between all artifacts | 8 |
@@ -21,7 +22,7 @@
 | [decision-tree.md](./decision-tree.md) | When to use which command | 6 |
 | [gap-notation.md](./gap-notation.md) | How to visualize gaps and uncertainties in diagrams | 8 |
 
-**Total: ~55 diagrams**
+**Total: ~61 diagrams**
 
 ---
 
@@ -35,24 +36,32 @@ flowchart LR
     end
     
     subgraph Triage
-        T["/speckit.triage"]
+        T["/speckit-triage"]
+        Overview["🎯 project-overview.md"]
     end
     
     subgraph Core
-        C["/speckit.constitution"]
-        S["/speckit.specify"]
-        P["/speckit.plan"]
-        K["/speckit.tasks"]
-        I["/speckit.implement"]
+        C["/speckit-constitution"]
+        S["/speckit-specify"]
+        P["/speckit-plan"]
+        K["/speckit-tasks"]
+        I["/speckit-implement"]
     end
     
     User --> T
+    T --> Overview
     T --> C
     T --> S
     C --> S
     S --> P
     P --> K
     K --> I
+    
+    S -.->|updates| Overview
+    P -.->|updates| Overview
+    I -.->|updates| Overview
+    
+    style Overview fill:#e8f5e9,stroke:#4caf50,stroke-width:2px,color:#000
 ```
 
 ---

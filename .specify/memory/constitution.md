@@ -90,7 +90,7 @@ All project-specific technical context must be documented in `project-context/`:
 
 **Rules**:
 - Context documentation lives OUTSIDE `.specify/` (project-specific, not toolkit)
-- Run `/speckit.context` to initialize context documentation
+- Run `/speckit-context` to initialize context documentation
 - Update context documentation when adding new env vars, schemas, or tools
 - AI agents MUST read context before generating plans or implementations
 
@@ -124,6 +124,42 @@ Diagrams must explicitly show knowledge gaps and incomplete areas:
 - Gaps identified in diagrams should become clarification questions
 - Review and resolve gaps before moving to implementation
 - See `.specify/docs/flows/gap-notation.md` for examples
+
+### XII. Project Lifecycle Flow
+
+The project must have a progressive lifecycle that is **orchestrated** and **visually tracked** as the specification evolves:
+
+**Central Artifacts**:
+- `project-context/project-workplan.md` - Mandatory orchestration artifact (which agent to call next, phase status, decision points)
+- `project-context/project-overview.md` - Mandatory macro view of the project
+
+**Required Content in project-overview.md**:
+- Diagram of main functional blocks (maximum 5–7 blocks)
+- Completion status of all artifacts (Constitution, Specs, Plans, Tasks, Code)
+- List of identified gaps with prioritization
+- Version history (V1, V2, V3...)
+
+**Required Content in project-workplan.md**:
+- Agent Execution Plan (all `/speckit.*` phases with status)
+- Current Phase and Next Recommended Action
+- Decision Points (at minimum: DP1 Project Structure, DP2 Tech Stack)
+- Triage Rounds Log and backlog summary
+- Project Start Checklist for new projects
+
+**Rules**:
+- `/speckit-context` and `/speckit-triage` MUST create/update both workplan and overview automatically
+- After each main command (`/speckit-constitution`, `/speckit-specify`, `/speckit-plan`, `/speckit-tasks`, `/speckit-implement`), the workplan MUST be updated
+- Incomplete blocks in the overview use gap notation (`?` suffix, `:::gap` class)
+- Any significant change increments the overview version
+- `project-workplan.md` is the source of truth for **which agent/phase** comes next
+- `project-overview.md` is the source of truth for the current **project status**
+- Specification, plans, tasks, and code continuously feed back into both artifacts
+
+**Evolution Flow**:
+```
+Triage → Workplan V1 + Overview V1 (macro) → Specs → Overview V2 (detailed) → 
+Plans → Overview V3 → Code/Tasks → Refinements → Overview VN
+```
 
 ## Quality Gates
 

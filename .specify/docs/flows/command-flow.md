@@ -2,14 +2,14 @@
 
 > Detailed flow diagrams for each Spec Kit command
 
-## /speckit.triage
+## /speckit-triage
 
 Analyzes mixed user input and separates it into Constitution vs Specification content.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.triage]) --> Input[Receive user input text]
+    Start([User invokes /speckit-triage]) --> Input[Receive user input text]
     
     Input --> Analyze[Analyze content semantically]
     
@@ -31,8 +31,8 @@ flowchart TD
     Summary --> AskRound["🔄 Ask: Need another round?"]
     
     AskRound --> Options{User response?}
-    Options -->|Process Constitution| ConstCmd[Suggest /speckit.constitution]
-    Options -->|Process Specification| SpecCmd[Suggest /speckit.specify]
+    Options -->|Process Constitution| ConstCmd[Suggest /speckit-constitution]
+    Options -->|Process Specification| SpecCmd[Suggest /speckit-specify]
     Options -->|Add more content| Start
     Options -->|Complete| Done([Phase complete])
     
@@ -44,14 +44,14 @@ flowchart TD
 
 ---
 
-## /speckit.context
+## /speckit-context
 
 Initializes and updates project-specific technical context documentation.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.context]) --> Check{project-context/ exists?}
+    Start([User invokes /speckit-context]) --> Check{project-context/ exists?}
     
     Check -->|No| Create[Create folder & copy templates]
     Check -->|Yes| Scan[Scan project for changes]
@@ -90,14 +90,14 @@ flowchart TD
 
 ---
 
-## /speckit.constitution
+## /speckit-constitution
 
 Defines and maintains project-wide principles, rules, and quality gates.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.constitution]) --> Check{Backlog exists?}
+    Start([User invokes /speckit-constitution]) --> Check{Backlog exists?}
     
     Check -->|Yes| ReadBacklog[Read triage_constitution.md]
     Check -->|No| ReadArgs[Read command arguments]
@@ -105,11 +105,9 @@ flowchart TD
     ReadBacklog --> Pending[Get pending entries]
     ReadArgs --> Pending
     
-    Pending --> LoadContext[Load project-context/ (if exists)]
-    LoadContext --> Exists{constitution.md exists?}
-    
-    Exists -->|Yes| Load[Load existing constitution]
-    Exists -->|No| Template[Create from template]
+    Pending --> LoadCtx{project-context/ exists?}
+    LoadCtx -->|Yes| Load[Load existing constitution]
+    LoadCtx -->|No| Template[Create from template]
     
     Load --> Merge[Merge new content]
     Template --> Merge
@@ -135,14 +133,14 @@ flowchart TD
 
 ---
 
-## /speckit.specify
+## /speckit-specify
 
 Creates feature specifications with business flows and user stories.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.specify]) --> Check{Backlog exists?}
+    Start([User invokes /speckit-specify]) --> Check{Backlog exists?}
     
     Check -->|Yes| ReadBacklog[Read triage_specification.md]
     Check -->|No| ReadArgs[Read feature description]
@@ -214,14 +212,14 @@ flowchart LR
 
 ---
 
-## /speckit.plan
+## /speckit-plan
 
 Creates technical implementation plans with architecture diagrams.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.plan]) --> LoadSpec[Load spec.md]
+    Start([User invokes /speckit-plan]) --> LoadSpec[Load spec.md]
     
     LoadSpec --> LoadConst[Load constitution.md]
     
@@ -300,14 +298,14 @@ flowchart LR
 
 ---
 
-## /speckit.tasks
+## /speckit-tasks
 
 Breaks down the plan into actionable, prioritized tasks.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.tasks]) --> LoadPlan[Load plan.md]
+    Start([User invokes /speckit-tasks]) --> LoadPlan[Load plan.md]
     
     LoadPlan --> LoadSpec[Load spec.md for priorities]
     
@@ -357,14 +355,14 @@ flowchart TB
 
 ---
 
-## /speckit.implement
+## /speckit-implement
 
 Executes implementation following the tasks.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User invokes /speckit.implement]) --> LoadTasks[Load tasks.md]
+    Start([User invokes /speckit-implement]) --> LoadTasks[Load tasks.md]
     
     LoadTasks --> LoadPlan[Load plan.md for context]
     
@@ -404,27 +402,27 @@ flowchart TD
 
 ## Supporting Commands
 
-### /speckit.clarify
+### /speckit-clarify
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
-    Input[Artifact with<br/>NEEDS CLARIFICATION] --> Clarify[/speckit.clarify]
-    Clarify --> Questions[Structured Questions]
-    Questions --> User([User Answers])
-    User --> Updated[Updated Artifact]
+    Input[Artifact with<br/>NEEDS CLARIFICATION] --> ClarifyCmd["/speckit-clarify"]
+    ClarifyCmd --> Questions[Structured Questions]
+    Questions --> UserAns([User Answers])
+    UserAns --> Updated[Updated Artifact]
     
     style Input fill:#ffcdd2,stroke:#c62828,color:#000
     style Updated fill:#c8e6c9,stroke:#388e3c,color:#000
 ```
 
-### /speckit.analyze
+### /speckit-analyze
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
-    Artifacts[All Artifacts] --> Analyze[/speckit.analyze]
-    Analyze --> Report[Consistency Report]
+    Artifacts[All Artifacts] --> AnalyzeCmd["/speckit-analyze"]
+    AnalyzeCmd --> Report[Consistency Report]
     Report --> Issues[Detected Issues]
     Report --> Suggestions[Improvement Suggestions]
     
@@ -432,16 +430,55 @@ flowchart LR
     style Report fill:#fff9c4,stroke:#fbc02d,color:#000
 ```
 
-### /speckit.checklist
+### /speckit-checklist
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
-    Phase[Current Phase] --> Checklist[/speckit.checklist]
-    Checklist --> Gates[Quality Gate Items]
+    Phase[Current Phase] --> ChecklistCmd["/speckit-checklist"]
+    ChecklistCmd --> Gates[Quality Gate Items]
     Gates --> Status[Pass/Fail Status]
     
     style Phase fill:#f3e5f5,stroke:#7b1fa2,color:#000
     style Status fill:#c8e6c9,stroke:#388e3c,color:#000
 ```
 
+## Prerequisite Check Flow (Scripts)
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
+flowchart TD
+    subgraph FeatureCommands[" Feature-Level Commands"]
+        Specify[/speckit-specify/] --> Plan[/speckit-plan/]
+        Plan --> Tasks[/speckit-tasks/]
+        Tasks --> Implement[/speckit-implement/]
+        Tasks --> ChecklistCmd[/speckit-checklist/]
+        Tasks --> TaskToIssues[/speckit-taskstoissues/]
+        Implement --> AnalyzeCmd[/speckit-analyze/]
+        Implement --> ClarifyCmd[/speckit-clarify/]
+    end
+
+    subgraph Scripts[" PowerShell Scripts"]
+        CreateNew[create-new-feature.ps1]
+        SetupPlan[setup-plan.ps1]
+        CheckPrereq[check-prerequisites.ps1]
+        UpdateAgent[update-agent-context.ps1]
+    end
+
+    Specify --> CreateNew
+    Plan --> SetupPlan
+
+    Tasks -->|"-Json"| CheckPrereq
+    Implement -->|"-Json -RequireTasks -IncludeTasks"| CheckPrereq
+    ChecklistCmd -->|"-Json"| CheckPrereq
+    AnalyzeCmd -->|"-Json -RequireTasks -IncludeTasks"| CheckPrereq
+    TaskToIssues -->|"-Json -RequireTasks -IncludeTasks"| CheckPrereq
+    ClarifyCmd -->|"-Json -PathsOnly"| CheckPrereq
+
+    CheckPrereq --> FeatureDocs[("FEATURE_DIR + AVAILABLE_DOCS\n(plan.md, tasks.md, etc.)")]
+
+    Plan --> UpdateAgent
+
+    style FeatureCommands fill:#e8f5e9,stroke:#4caf50,color:#000
+    style Scripts fill:#e3f2fd,stroke:#1976d2,color:#000
+    style FeatureDocs fill:#fff9c4,stroke:#fbc02d,color:#000

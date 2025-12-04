@@ -8,8 +8,8 @@
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TB
     subgraph Rules["🏆 Golden Rules of Spec Kit"]
-        R0["0️⃣ Document project context first<br/>/speckit.context for technical setup"]
-        R1["1️⃣ Always start with /speckit.triage<br/>when input is mixed or unclear"]
+        R0["0️⃣ Document project context first<br/>/speckit-context for technical setup"]
+        R1["1️⃣ Always start with /speckit-triage<br/>when input is mixed or unclear"]
         R2["2️⃣ Constitution before Specification<br/>Rules constrain features"]
         R3["3️⃣ Specify before Plan<br/>WHAT before HOW"]
         R4["4️⃣ Plan before Tasks<br/>Architecture before breakdown"]
@@ -189,7 +189,7 @@ flowchart TD
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
     subgraph Fixes
-        AP1["Premature Implementation"] --> Fix1["Go back to /speckit.specify"]
+        AP1["Premature Implementation"] --> Fix1["Go back to /speckit-specify"]
         AP2["Scope Creep"] --> Fix2["Create new spec for additions"]
         AP3["Tech in Spec"] --> Fix3["Move to plan.md"]
         AP4["Orphan Tasks"] --> Fix4["Link to FR-XXX"]
@@ -216,7 +216,7 @@ flowchart TD
     Q2 -->|No| AddDiagrams[Add required diagrams]
     Q2 -->|Yes| Q3{NEEDS CLARIFICATION < 3?}
     
-    Q3 -->|No| Clarify[Use /speckit.clarify]
+    Q3 -->|No| Clarify[Use /speckit-clarify]
     Q3 -->|Yes| Q4{Asked 'Another round?'}
     
     Q4 -->|No| Ask["Ask user 'Need another round?'"]
@@ -306,7 +306,7 @@ Context:
 - Main goal: [what they want to achieve]
 - Current situation: [how it's done today, if applicable]
 
-Please use /speckit.triage to process this.
+Please use /speckit-triage to process this.
 ```
 
 ### Requesting Clarification

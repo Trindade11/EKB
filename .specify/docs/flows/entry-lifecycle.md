@@ -7,7 +7,7 @@
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 stateDiagram-v2
-    [*] --> Pending: Created by /speckit.triage
+    [*] --> Pending: Created by /speckit-triage
     
     Pending --> Processing: Consumer command starts
     Processing --> Absorbed: Successfully integrated
@@ -53,7 +53,7 @@ flowchart TD
     
     Created --> Pending
     
-    Pending -->|"/speckit.constitution<br/>or /speckit.specify"| Processing
+    Pending -->|"/speckit-constitution<br/>or /speckit-specify"| Processing
     Pending -->|"Conflicting entry added"| Superseded
     Pending -->|"User cancels"| Discarded
     
@@ -145,9 +145,9 @@ stateDiagram-v2
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 sequenceDiagram
     participant User
-    participant Triage as /speckit.triage
+    participant Triage as /speckit-triage
     participant Backlog as triage_constitution.md
-    participant Command as /speckit.constitution
+    participant Command as /speckit-constitution
     participant Artifact as constitution.md
     
     User->>Triage: "All code must be typed"
@@ -174,9 +174,9 @@ sequenceDiagram
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 sequenceDiagram
     participant User
-    participant Triage as /speckit.triage
+    participant Triage as /speckit-triage
     participant Backlog as triage_specification.md
-    participant Command as /speckit.specify
+    participant Command as /speckit-specify
     participant Const as constitution.md
     participant Spec as specs/###/spec.md
     

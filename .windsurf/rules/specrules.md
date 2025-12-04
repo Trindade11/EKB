@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Project Rules
 
 > This file is the **source of truth** for AI rules in this repo. In IDEs like Windsurf, copy the relevant parts of this file into **Customizations → Rules → Workspace** so Cascade follows them for this workspace.

@@ -1,11 +1,11 @@
 # Specification Backlog
 
-> This file is managed by `/speckit.triage`. Each entry represents a feature or behavior to be processed by `/speckit.specify`.
+> This file is managed by `/speckit-triage`. Each entry represents a feature or behavior to be processed by `/speckit-specify`.
 
 ## How it works
 
-1. `/speckit.triage` adds entries with `status: pending`
-2. `/speckit.specify` reads pending entries and creates specifications
+1. `/speckit-triage` adds entries with `status: pending`
+2. `/speckit-specify` reads pending entries and creates specifications
 3. After processing, status changes to `absorbed` with timestamp, agent, and reference to created spec
 
 ---

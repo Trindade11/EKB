@@ -75,27 +75,27 @@ flowchart TD
     
     Triage -->|Principles, Rules| ConstBacklog[(Constitution Backlog)]
     Triage -->|Features, Behaviors| SpecBacklog[(Specification Backlog)]
-    Triage -->|Technical Context| ContextCmd[/speckit.context]
+    Triage -->|Technical Context| ContextCmd[/speckit-context]
     
     ContextCmd --> ContextFolder[project-context/]
     
-    ConstBacklog --> Constitution[/speckit.constitution]
-    SpecBacklog --> Specify[/speckit.specify]
+    ConstBacklog --> Constitution[/speckit-constitution]
+    SpecBacklog --> Specify[/speckit-specify]
     
     Constitution --> ConstitutionFile[constitution.md]
     ConstitutionFile -->|Constrains| Specify
     ContextFolder -->|Informs| Plan
     
     Specify --> SpecFile[spec.md]
-    SpecFile --> Plan[/speckit.plan]
+    SpecFile --> Plan[/speckit-plan]
     
     Plan --> Research[Research Phase]
     Research --> PlanFile[plan.md]
     
-    PlanFile --> Tasks[/speckit.tasks]
+    PlanFile --> Tasks[/speckit-tasks]
     Tasks --> TaskFile[tasks.md]
     
-    TaskFile --> Implement[/speckit.implement]
+    TaskFile --> Implement[/speckit-implement]
     Implement --> Code[Source Code]
     
     Code -->|Feedback| SpecFile
@@ -118,16 +118,16 @@ flowchart LR
     
     subgraph Processing["⚙️ PROCESSING"]
         direction TB
-        Triage["🔀 /speckit.triage<br/>Separates concerns"]
-        Context["🗂️ /speckit.context<br/>Documents tech context"]
-        Const["🏛️ /speckit.constitution<br/>Defines rules"]
-        Spec["📋 /speckit.specify<br/>Defines WHAT and WHY"]
-        Plan["🔧 /speckit.plan<br/>Defines HOW"]
-        Task["📝 /speckit.tasks<br/>Breaks down work"]
+        Triage["🔀 /speckit-triage<br/>Separates concerns"]
+        Context["🗂️ /speckit-context<br/>Documents tech context"]
+        Const["🏛️ /speckit-constitution<br/>Defines rules"]
+        Spec["📋 /speckit-specify<br/>Defines WHAT and WHY"]
+        Plan["🔧 /speckit-plan<br/>Defines HOW"]
+        Task["📝 /speckit-tasks<br/>Breaks down work"]
     end
     
     subgraph Output["📤 OUTPUT"]
-        Impl["💻 /speckit.implement<br/>Generates code"]
+        Impl["💻 /speckit-implement<br/>Generates code"]
     end
     
     Raw --> Triage
@@ -152,13 +152,13 @@ flowchart LR
 flowchart TD
     Q1{What do you have?}
     
-    Q1 -->|Mixed/unclear input| T[Use /speckit.triage]
-    Q1 -->|Technical context<br/>(env, db, tools)| CTX[Use /speckit.context]
-    Q1 -->|Project rules/principles| C[Use /speckit.constitution]
-    Q1 -->|Feature idea| S[Use /speckit.specify]
-    Q1 -->|Existing spec| P[Use /speckit.plan]
-    Q1 -->|Existing plan| K[Use /speckit.tasks]
-    Q1 -->|Ready tasks| I[Use /speckit.implement]
+    Q1 -->|Mixed/unclear input| T[Use /speckit-triage]
+    Q1 -->|Technical context<br/>(env, db, tools)| CTX[Use /speckit-context]
+    Q1 -->|Project rules/principles| C[Use /speckit-constitution]
+    Q1 -->|Feature idea| S[Use /speckit-specify]
+    Q1 -->|Existing spec| P[Use /speckit-plan]
+    Q1 -->|Existing plan| K[Use /speckit-tasks]
+    Q1 -->|Ready tasks| I[Use /speckit-implement]
     
     T -->|Sorted content| Q1
     

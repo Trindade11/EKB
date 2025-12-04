@@ -11,7 +11,7 @@ flowchart TB
         Raw["Mixed content:<br/>rules + features + ideas"]
     end
     
-    subgraph Triage["🔀 /speckit.triage"]
+    subgraph Triage["🔀 /speckit-triage"]
         Analyze[Semantic Analysis]
         Classify[Classification Engine]
     end
@@ -23,8 +23,8 @@ flowchart TB
     end
     
     subgraph Consumers["⚙️ Consumer Commands"]
-        ConstCmd[/speckit.constitution]
-        SpecCmd[/speckit.specify]
+        ConstCmd[/speckit-constitution]
+        SpecCmd[/speckit-specify]
     end
     
     Raw --> Analyze
@@ -151,9 +151,9 @@ flowchart LR
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 sequenceDiagram
     participant User
-    participant Triage as /speckit.triage
+    participant Triage as /speckit-triage
     participant ConstQ as triage_constitution.md
-    participant Constitution as /speckit.constitution
+    participant Constitution as /speckit-constitution
     participant ConstFile as constitution.md
     
     User->>Triage: Mixed input
@@ -202,11 +202,11 @@ flowchart TB
     end
     
     subgraph Commands["Commands"]
-        Const[/speckit.constitution]
-        Spec[/speckit.specify]
-        Plan[/speckit.plan]
-        Tasks[/speckit.tasks]
-        Impl[/speckit.implement]
+        Const[/speckit-constitution]
+        Spec[/speckit-specify]
+        Plan[/speckit-plan]
+        Tasks[/speckit-tasks]
+        Impl[/speckit-implement]
     end
     
     subgraph Artifacts["Generated Artifacts"]

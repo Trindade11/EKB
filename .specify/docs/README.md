@@ -15,6 +15,7 @@ This folder contains documentation for the Spec Kit methodology.
 └── flows/                 ← Visual flow diagrams
     ├── FLOWS.md           ← Index of all diagrams
     ├── overview.md        ← SDD methodology overview
+    ├── project-lifecycle.md ← Project lifecycle and macro flow
     ├── command-flow.md    ← Each command detailed
     ├── triage-system.md   ← Backlog system
     ├── gap-notation.md    ← Gap visualization standards

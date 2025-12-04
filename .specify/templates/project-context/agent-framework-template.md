@@ -263,7 +263,7 @@ All inter-agent communication uses this format:
 ### Communication Flow
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#fff', 'secondaryTextColor': '#fff', 'tertiaryTextColor': '#fff', 'lineColor': '#ccc', 'actorTextColor': '#000'}}}%%
 sequenceDiagram
     participant User
     participant Orchestrator
